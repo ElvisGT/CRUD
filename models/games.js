@@ -1,6 +1,6 @@
 const {Schema,model} = require("mongoose");
 
-const gameSchema = Schema({
+const gameSchema = new Schema({
     name:{
         type:String,
         required:true
@@ -19,5 +19,5 @@ gameSchema.JSON = function(){
     }
 }
 
-const game = model("Game",gameSchema)
-module.exports = game;
+const Game = model("game",gameSchema)
+module.exports = {Game};

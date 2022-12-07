@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 //Locales
-const {connection} = require("../database/config");
+const connection = require("../database/config");
 const gameRouter = require("../routes/games");
 
 class Server {
@@ -24,12 +24,11 @@ class Server {
         //routing
         this.routes();
 
-        //conectar la base de datos
-        connection();
     }
 
     middlewares(){
         this.app.use(cors());
+        this.app.use(express.json());
     }
 
     routes(){
