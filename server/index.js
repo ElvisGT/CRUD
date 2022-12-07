@@ -1,18 +1,28 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+
+//Locales
 const {connection} = require("../database/config");
+const gameRouter = require("../routes/games");
 
 class Server {
     app = null;
     port = null;
+    path = null
 
     constructor(){
         this.app = express();
         this.port = process.env.PORT || 8089;
+        this.paths = {
+            games:'/api/v1/games'
+        }
 
         //middlewares
         this.middlewares();
+
+        //routing
+        this.routes();
 
         //conectar la base de datos
         connection();
@@ -20,6 +30,10 @@ class Server {
 
     middlewares(){
         this.app.use(cors());
+    }
+
+    routes(){
+        this.app.use(this.paths.games,gameRouter)
     }
 
     listen(){
