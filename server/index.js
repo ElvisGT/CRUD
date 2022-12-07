@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const {connection} = require("../database/config");
 
 class Server {
     app = null;
@@ -12,6 +13,9 @@ class Server {
 
         //middlewares
         this.middlewares();
+
+        //conectar la base de datos
+        connection();
     }
 
     middlewares(){
@@ -23,6 +27,7 @@ class Server {
             console.log("Server corriendo en el puerto",this.port);
         })
     }
+
 
 }
 
