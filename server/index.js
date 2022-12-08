@@ -5,6 +5,8 @@ require("dotenv").config();
 //Locales
 require("../database/config");
 const gameRouter = require("../routes/games");
+const registerRouter = require("../routes/register");
+
 
 class Server {
     app = null;
@@ -15,7 +17,8 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || 8089;
         this.paths = {
-            games:'/api/v1/games'
+            games:'/api/v1/games',
+            register:'/api/v1/register'
         }
 
         //middlewares
@@ -33,6 +36,7 @@ class Server {
 
     routes(){
         this.app.use(this.paths.games,gameRouter)
+        this.app.use(this.paths.register,registerRouter)
     }
 
     listen(){
