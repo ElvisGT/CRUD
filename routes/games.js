@@ -7,6 +7,7 @@ const { getAllGames,
         updateGame} = require("../controllers/games");
 const { verifyJWT } = require("../middlewares/verify-jwt");
 const { verifyAll } = require("../middlewares/verify-all");
+const { verifyGameName } = require("../middlewares/verify-name");
 
 
 const router = Router();
@@ -22,7 +23,8 @@ router.get('/:id',[
 ],getById);
 
 router.post('/',[
-        verifyJWT
+        verifyJWT,
+        verifyGameName
 ],createGame);
 
 router.put("/:id",[
