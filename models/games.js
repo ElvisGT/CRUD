@@ -11,13 +11,11 @@ const gameSchema = new Schema({
     }
 })
 
-gameSchema.JSON = function(){
-    const {__v,...rest} = this.Object();
+gameSchema.methods.toJSON = function(){
+    const {__v,...rest} = this.toObject();
 
-    return {
-        rest
-    }
+    return rest
 }
 
 const Game = model("game",gameSchema)
-module.exports = {Game};
+module.exports = Game;

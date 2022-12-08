@@ -3,13 +3,13 @@ const cors = require("cors");
 require("dotenv").config();
 
 //Locales
-const connection = require("../database/config");
+require("../database/config");
 const gameRouter = require("../routes/games");
 
 class Server {
     app = null;
     port = null;
-    path = null
+    path = null;
 
     constructor(){
         this.app = express();
