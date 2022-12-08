@@ -13,9 +13,12 @@ const verifyJWT = (req = request,res = response, next) => {
    
     try{
         const {id} = jwt.verify(token,secretKey);
-        console.log(id);
+
+        req.userAuth = id;
 
         next();
+
+
     }catch(err){
         return res.status(401).json({
             msg:"Token no valido"

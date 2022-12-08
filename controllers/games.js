@@ -3,7 +3,7 @@ const Game = require("../models/games");
 
 const getAllGames = async (req = request,res = response) => {
     const [games,total] = await Promise.all([
-        Game.find({}),
+        Game.find({}).populate('user','userName'),
         Game.countDocuments()
     ])
 
@@ -16,7 +16,7 @@ const getAllGames = async (req = request,res = response) => {
 
 const getById = async (req = request, res = response) => {
     const {id} = req.params;
-    const game = await Game.findById(id);
+    const game = await Game.findById(id).populate('user','userName');
 
     res.json({
         ok:true,
@@ -27,8 +27,15 @@ const getById = async (req = request, res = response) => {
 const createGame = async (req = request,res = response) => {
     const {name,gender} = req.body;
 
+    //Generar datos
+    const data = {
+        name,
+        gender,
+        user:req.userAuth
+    }
+
     // //Guardar en base de datos
-    const game = new Game({name,gender});
+    const game = new Game(data);
     await game.save();
 
     res.json({

@@ -8,6 +8,10 @@ const gameSchema = new Schema({
     gender:{
         type:String,
         required:true
+    },
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:"user"
     }
 })
 
