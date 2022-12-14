@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "ElvisGT",
   "license": "MIT",
+  "scripts":{
+    "start":"yarn node index"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
