@@ -12,25 +12,7 @@ const { verifyAll } = require("../middlewares/verify-all");
 const { verifyGameName } = require("../middlewares/verify-name");
 
 const router = Router();
-/**
- * @openapi
- * components:
- *  schemas:
- *     Game:
- *       type: object
- *       properties:
- *         name:
- *          type: string
- *          example: Fifa
- *         gender:
- *          type: string
- *          example: Deporte
- *         user:
- *          type: string
- *          example: 6397d0203759a4c2a489f6e0
- * 
- * 
- */
+
 router
   .get("/", [verifyJWT], getAllGames)
 

@@ -51,6 +51,16 @@
         "tags": [
           "Games"
         ],
+        "parameters":[
+          {
+            "name":"x-token",
+            "in":"header",
+            "description":"Token que debe ser enviado en cada peticion",
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Un array de objetos con los juegos disponibles",
@@ -65,6 +75,9 @@
                 }
               }
             }
+          },
+          "401":{
+            "description":"'Token no valido' o 'No hay token en la peticion'"
           }
         }
       },
@@ -73,8 +86,24 @@
         "responses": {
           "201": {
             "description": "Creado exitosamente"
+          },
+          "400":{
+            "description":"El nombre del juego ya existe"
+          },
+          "401":{
+            "description":"'Token no valido' o 'No hay token en la peticion'"
           }
         },
+        "parameters":[
+          {
+            "name":"x-token",
+            "in":"header",
+            "description":"Token que debe ser enviado en cada peticion",
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
         "tags": [
           "Games"
         ],
@@ -91,11 +120,29 @@
         }
       }
     },
-    "/api/v1/games/:id": {
+    "/api/v1/games/{id}": {
       "get": {
         "summary": "Retorna un juego dado un id",
         "tags": [
           "Games"
+        ],
+        "parameters":[
+          {
+            "name":"x-token",
+            "in":"header",
+            "description":"Token que debe ser enviado en cada peticion",
+            "schema":{
+              "type":"string"
+            }
+          },
+          {
+            "name":"id",
+            "in":"path",
+            "description":"Id que se debe mandar en el path de la url",
+            "schema":{
+              "type":"string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -109,14 +156,38 @@
               }
             }
           }
+        },
+        "401":{
+          "description":"'Token no valido' o 'No hay token en la peticion'"
         }
       },
       "delete":{
         "summary":"Eliminar juego",
         "tags":["Games"],
+        "parameters":[
+          {
+            "name":"id",
+            "in":"path",
+            "description":"Id que se debe mandar en el path de la url",
+            "schema":{
+              "type":"string"
+            }
+          },
+          {
+            "name":"x-token",
+            "in":"header",
+            "description":"Token que debe ser enviado en cada peticion",
+            "schema":{
+              "type":"string"
+            }
+          }
+        ],
         "responses":{
           "200":{
             "description":"Borrado exitosamente"
+          },
+          "401":{
+            "description":"'Token no valido' o 'No hay token en la peticion'"
           }
         }
       }
@@ -127,6 +198,36 @@
         "responses": {
           "201": {
             "description": "Creado correctamente"
+          },
+          "400":{
+            "description":"El nombre de usuario ya existe"
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref":"#/components/schemas/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/register/login": {
+      "post": {
+        "summary": "Loguin de usuario",
+        "responses": {
+          "201": {
+            "description": "Creado correctamente"
+          },
+          "400":{
+            "description":"El nombre de usuario ya existe"
           }
         },
         "tags": [
