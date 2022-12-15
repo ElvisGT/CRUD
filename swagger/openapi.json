@@ -10,7 +10,7 @@
       "description": "Documentacion en local"
     },
     {
-      "url":"https://crudappjuegos-production.up.railway.app/api/v1/docs/",
+      "url":"https://crudappjuegos-production.up.railway.app",
       "description":"Documentacion online"
     }
   ],
