@@ -8,6 +8,10 @@
     {
       "url": "http://localhost:8086",
       "description": "Documentacion en local"
+    },
+    {
+      "url":"https://crudappjuegos-production.up.railway.app/api/v1/docs/",
+      "description":"Documentacion online"
     }
   ],
   "components": {
