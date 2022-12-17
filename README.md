@@ -12,7 +12,6 @@ App que permite llevar una constancia sobre los videojuegos que posee cada usuar
 	
 ### Nota:
 Este proyecto lo realice con el gestor de paquetes Yarn en lugar de Npm por lo que para hacer las instalaciones perminentes aconsejo utilizar el mismo
-link oficial: https://yarnpkg.com/
 
 ## Para ejecutarla:
 1- Clonar el repositorio
