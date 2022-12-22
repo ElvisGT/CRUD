@@ -29,3 +29,6 @@ Este proyecto lo realice con el gestor de paquetes Yarn en lugar de Npm por lo q
 4- Levantar el server
 
 `yarn start`
+
+## Capturas:
+<img src="https://i.ibb.co/Bn5PrG5/crud-app-juegos.png" alt="captura del proyecto crud de juegos"/>
